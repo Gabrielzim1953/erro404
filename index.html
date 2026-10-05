@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Configurações da aba, do idioma e arquivos de estilo/comportamento. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#121212">
+    <meta name="description" content="A página que você procura não foi encontrada.">
+    <title>Página Não Encontrada | B&amp;Y</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Estrutura geral: cabeçalho, área principal e rodapé. -->
+    <div class="page-shell">
+        <!-- Cabeçalho com menu, marca e atalhos de busca/conta/carrinho. -->
+        <header class="topbar">
+            <button class="icon-button menu-button" type="button" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <a class="wordmark" href="/" aria-label="B&Y — página inicial">
+                <span>B&amp;Y</span>
+                <small>BEAUTY &amp; YOU</small>
+            </a>
+
+            <nav class="utility-nav" aria-label="Atalhos">
+                <button class="icon-button" type="button" aria-label="Buscar">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"></circle><path d="m16 16 4.2 4.2"></path></svg>
+                </button>
+                <button class="icon-button" type="button" aria-label="Minha conta">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 20c.5-3.5 2.7-5.3 6.5-5.3s6 1.8 6.5 5.3"></path></svg>
+                </button>
+                <button class="icon-button bag-button" type="button" aria-label="Carrinho">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 8.5h13l1 12h-15l1-12Z"></path><path d="M9 9V6a3 3 0 0 1 6 0v3"></path></svg>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Área principal do erro: fundo, pétalas, texto e ilustração. -->
+        <main class="error-main">
+            <!-- Camada escura decorativa no fundo. -->
+            <div class="scene" aria-hidden="true"></div>
+            <!-- O script.js cria as pétalas animadas dentro deste contêiner. -->
+            <div class="petal-field" aria-hidden="true"></div>
+
+            <!-- Texto vertical à direita da composição. -->
+            <span class="side-note" aria-hidden="true">PAGE NOT FOUND</span>
+
+            <!-- Mensagem central; o link retorna ao início do site. -->
+            <section class="error-message" aria-labelledby="error-title">
+                <div class="error-number-wrap">
+                    <!-- Imagem decorativa posicionada por .samurai-image no CSS. -->
+                    <img class="samurai-image" src="Guerreira Samurai de Cabelos Prateados.png" alt="" aria-hidden="true">
+                    <!-- Coroa vetorial decorativa acima do número. -->
+                    <svg class="crown" viewBox="0 0 80 52" aria-hidden="true">
+                        <path d="m7 13 15 13 17-20 18 20 16-13-7 31H14L7 13Z"></path>
+                        <path d="M14 49h52"></path>
+                        <circle cx="7" cy="11" r="3"></circle>
+                        <circle cx="39" cy="5" r="3"></circle>
+                        <circle cx="73" cy="11" r="3"></circle>
+                    </svg>
+                    <!-- O primeiro 4 fica atrás da samurai; 04 fica na frente. -->
+                    <h1 id="error-title" aria-label="404"><span class="digit-behind">4</span><span class="digit-front">04</span></h1>
+                    <!-- Flor vetorial decorativa à direita do número. -->
+                    <svg class="flower" viewBox="0 0 100 100" aria-hidden="true">
+                        <g class="flower-petals">
+                            <ellipse cx="50" cy="20" rx="9" ry="19"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(45 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(90 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(135 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(180 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(225 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(270 50 50)"></ellipse>
+                            <ellipse cx="50" cy="20" rx="9" ry="19" transform="rotate(315 50 50)"></ellipse>
+                        </g>
+                        <circle cx="50" cy="50" r="10"></circle>
+                    </svg>
+                </div>
+                <p class="message-caption">A PÁGINA QUE VOCÊ PROCURA NÃO FOI ENCONTRADA</p>
+                <a class="back-button" href="/">BACK HOME <span aria-hidden="true">↗</span></a>
+            </section>
+        </main>
+
+    </div>
+</body>
+</html>

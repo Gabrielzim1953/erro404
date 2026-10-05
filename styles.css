@@ -1,0 +1,566 @@
+/* Fonte local usada somente no número 404. */
+@font-face {
+    font-family: "Black Runters";
+    src: url("Black Runters.otf") format("opentype");
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+}
+
+/* CORES E PADRÕES GERAIS: altere as variáveis para mudar o tema do site. */
+:root {
+    color-scheme: dark;
+    --background: #121212;
+    --text: #fff;
+    --accent: #e63946;
+    --muted: #aaa;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--background);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+}
+
+/* Faz largura/altura incluírem padding e borda em todos os elementos. */
+* {
+    box-sizing: border-box;
+}
+
+/* Remove margens padrão e define a largura mínima suportada. */
+html,
+body {
+    width: 100%;
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+}
+
+/* Cor de fundo da página e altura mínima da tela. */
+body {
+    min-height: 100vh;
+    background: var(--background);
+}
+
+/* Links e botões herdam a tipografia e a cor padrão do tema. */
+button,
+a {
+    color: inherit;
+    font: inherit;
+}
+
+/* Remove decoração padrão de links e espaços internos dos botões. */
+a {
+    text-decoration: none;
+}
+
+button {
+    padding: 0;
+}
+
+/* ESTRUTURA: linhas do cabeçalho e do conteúdo principal. */
+.page-shell {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 88px minmax(560px, 1fr);
+    padding: 0 5.2%;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 48%, rgb(230 57 70 / 10%), transparent 45%),
+        var(--background);
+}
+
+/* Linhas finas decorativas nas laterais da composição. */
+.page-shell::before,
+.page-shell::after {
+    position: absolute;
+    z-index: -1;
+    width: min(32vw, 470px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 40%), transparent);
+    content: "";
+    pointer-events: none;
+}
+
+/* Posição da linha decorativa superior. */
+.page-shell::before {
+    top: 20%;
+    left: 0;
+}
+
+/* Posição da linha decorativa inferior. */
+.page-shell::after {
+    right: 0;
+    bottom: 20%;
+}
+
+/* Cabeçalho: alinhamento horizontal dos elementos. */
+.topbar {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Linha divisória abaixo do cabeçalho. */
+.topbar {
+    border-bottom: 1px solid rgb(255 255 255 / 12%);
+}
+
+/* Aparência compartilhada pelos botões de ícone do cabeçalho/rodapé. */
+.icon-button {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: rgb(255 255 255 / 78%);
+    cursor: pointer;
+    transition: color 180ms ease;
+}
+
+/* Cor de destaque quando o mouse passa por botões. */
+.icon-button:hover {
+    color: var(--accent);
+}
+
+/* Tamanho e traço dos ícones vetoriais do cabeçalho. */
+.icon-button svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.3;
+}
+
+/* Formato do botão de menu hambúrguer. */
+.menu-button {
+    width: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Linhas que desenham o ícone do menu. */
+.menu-button span {
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+}
+
+/* Deixa a linha central do menu mais curta. */
+.menu-button span:nth-child(2) {
+    width: 15px;
+}
+
+/* Marca centralizada no cabeçalho. */
+.wordmark {
+    position: absolute;
+    left: 50%;
+    display: grid;
+    justify-items: center;
+    gap: 3px;
+    transform: translateX(-50%);
+}
+
+/* Estilo do texto principal da marca B&Y. */
+.wordmark > span {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 29px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* Estilo da legenda BEAUTY & YOU abaixo da marca. */
+.wordmark small {
+    color: var(--muted);
+    font-size: 7px;
+    letter-spacing: 3px;
+}
+
+/* Agrupa os ícones do cabeçalho com espaçamento consistente. */
+.utility-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ÁREA PRINCIPAL: centraliza a composição 404 e cria contexto de camadas. */
+.error-main {
+    position: relative;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+}
+
+/* Fundo/gradientes escuros por trás da ilustração. */
+.scene {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, var(--background) 1%, rgb(18 18 18 / 72%) 24%, rgb(18 18 18 / 38%) 50%, rgb(18 18 18 / 74%) 78%, var(--background) 100%),
+        linear-gradient(0deg, var(--background) 0%, rgb(18 18 18 / 16%) 48%, var(--background) 100%);
+    animation: scene-reveal 1.4s ease both;
+}
+
+/* IMAGEM: mude left para mover na horizontal, top para mover na vertical,
+   width/height para redimensionar e opacity para controlar a transparência. */
+.samurai-image {
+    position: absolute;
+    top: 65%;
+    left: calc(50% - 410px);
+    z-index: 1;
+    width: min(96vw, 1100px);
+    height: min(88vh, 740px);
+    object-fit: contain;
+    object-position: center bottom;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 18px 42px rgb(0 0 0 / 48%));
+    pointer-events: none;
+}
+
+/* Grupo do botão, número e mensagem; controla a entrada animada. */
+.error-message {
+    position: relative;
+    top: 32px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0 8px;
+    animation: enter-center 1s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+/* Botão de retorno: borda, tamanho, espaçamento e texto. */
+.back-button {
+    position: relative;
+    z-index: 3;
+    min-width: 148px;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding: 0 17px;
+    transform: translateX(90px);
+    border: 1px solid rgb(255 255 255 / 72%);
+    background: rgb(18 18 18 / 24%);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    transition: color 220ms ease, background 220ms ease, border-color 220ms ease;
+}
+
+/* Seta de destaque dentro do botão de retorno. */
+.back-button span {
+    color: var(--accent);
+    font-size: 15px;
+    transition: color 220ms ease, transform 220ms ease;
+}
+
+/* Efeito do botão quando recebe o mouse. */
+.back-button:hover {
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--background);
+}
+
+/* Movimento da seta durante o hover do botão. */
+.back-button:hover span {
+    color: var(--background);
+    transform: translate(2px, -2px);
+}
+
+/* POSIÇÃO DO BLOCO 404: translateX move o número e os ornamentos juntos. */
+.error-number-wrap {
+    position: relative;
+    display: grid;
+    place-items: center;
+    transform: translateX(90px);
+}
+
+/* TAMANHO E APARÊNCIA DO NÚMERO 404. */
+h1 {
+    position: relative;
+    margin: 0;
+    color: #fff;
+    font-family: "Black Runters", Georgia, "Times New Roman", serif;
+    font-size: clamp(190px, 32vw, 435px);
+    font-weight: 700;
+    letter-spacing: 0.015em;
+    line-height: 0.73;
+    text-shadow: 0 15px 70px rgb(255 255 255 / 10%);
+}
+
+/* Permite sobrepor o primeiro dígito com os dígitos da frente. */
+h1 span {
+    position: relative;
+}
+
+/* Camada do primeiro 4, que aparece atrás da imagem. */
+.digit-behind {
+    z-index: 0;
+}
+
+/* Camada do 04, mantida na frente da imagem. */
+.digit-front {
+    z-index: 2;
+}
+
+/* Aparência compartilhada pelos ornamentos vetoriais vermelhos. */
+.crown,
+.flower {
+    position: absolute;
+    z-index: 2;
+    overflow: visible;
+    fill: none;
+    stroke: var(--accent);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 12px rgb(230 57 70 / 40%));
+    pointer-events: none;
+}
+
+/* POSIÇÃO E TAMANHO DA COROA acima do número. */
+.crown {
+    top: -52px;
+    left: 50%;
+    width: 70px;
+    stroke-width: 2;
+    transform: translateX(-50%) rotate(-8deg);
+}
+
+/* Pontas da coroa preenchidas com a cor de destaque. */
+.crown circle {
+    fill: var(--accent);
+}
+
+/* POSIÇÃO E TAMANHO DA FLOR ao lado do número. */
+.flower {
+    right: -62px;
+    bottom: 5%;
+    width: clamp(46px, 7vw, 82px);
+    stroke-width: 2;
+    transform: rotate(12deg);
+}
+
+/* Preenchimento translúcido das pétalas da flor. */
+.flower-petals {
+    fill: rgb(230 57 70 / 14%);
+}
+
+/* Centro da flor na cor de destaque. */
+.flower circle {
+    fill: var(--accent);
+}
+
+/* Frase explicativa abaixo do número. */
+.message-caption {
+    position: relative;
+    z-index: 3;
+    width: max-content;
+    max-width: min(80vw, 640px);
+    margin: 18px 0 0;
+    transform: translateX(90px);
+    color: rgb(255 255 255 / 78%);
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+/* Texto vertical PAGE NOT FOUND na lateral direita. */
+.side-note {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    right: 3.7%;
+    color: #d0d0d0;
+    font-size: 8px;
+    letter-spacing: 3px;
+    writing-mode: vertical-rl;
+    transform: translateY(-50%);
+}
+
+/* Área que contém as pétalas criadas pelo script.js. */
+.petal-field {
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    inset: 0;
+}
+
+/* Aparência e animação individual de cada pétala. */
+.petal {
+    position: absolute;
+    top: -12%;
+    left: var(--left);
+    width: var(--size);
+    height: calc(var(--size) * 1.55);
+    border-radius: 100% 0 100% 0;
+    background: linear-gradient(145deg, #ff9aa5 0%, var(--accent) 54%, #851e2a 100%);
+    opacity: var(--opacity);
+    filter: blur(var(--blur));
+    transform: rotate(var(--rotate));
+    animation: petal-fall var(--duration) linear var(--delay) infinite;
+}
+
+/* Animação que faz as pétalas cruzarem a tela. */
+@keyframes petal-fall {
+    0% {
+        transform: translate3d(0, -12vh, 0) rotate(var(--rotate));
+    }
+
+    50% {
+        transform: translate3d(var(--drift), 55vh, 0) rotate(calc(var(--rotate) + 160deg));
+    }
+
+    100% {
+        transform: translate3d(calc(var(--drift) * -0.55), 118vh, 0) rotate(calc(var(--rotate) + 360deg));
+    }
+}
+
+/* Animação de entrada da mensagem central. */
+@keyframes enter-center {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animação de revelação gradual do fundo. */
+@keyframes scene-reveal {
+    from {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* AJUSTES PARA CELULARES: dimensões, posições e itens simplificados. */
+@media (max-width: 700px) {
+    .page-shell {
+        min-height: 100svh;
+        grid-template-rows: 76px minmax(500px, 1fr);
+        padding-inline: 22px;
+    }
+
+    .utility-nav {
+        gap: 1px;
+    }
+
+    .utility-nav .icon-button {
+        width: 31px;
+    }
+
+    .bag-button {
+        display: none;
+    }
+
+    .wordmark > span {
+        font-size: 25px;
+    }
+
+    .wordmark small {
+        font-size: 6px;
+        letter-spacing: 2px;
+    }
+
+    .samurai-image {
+        position: fixed;
+        top: auto;
+        right: auto;
+        bottom: -4vh;
+        left: 50%;
+        width: 200vw;
+        height: auto;
+        transform: translateX(-50%);
+    }
+
+    h1 {
+        font-size: clamp(175px, 45vw, 305px);
+    }
+
+    .error-number-wrap {
+        position: absolute;
+        top: 14%;
+        right: 0;
+        left: 0;
+        width: max-content;
+        margin-inline: auto;
+        transform: none;
+    }
+
+    .error-message {
+        position: absolute;
+        inset: 0;
+        top: auto;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        pointer-events: none;
+        animation: none;
+    }
+
+    .message-caption {
+        position: absolute;
+        top: 34%;
+        left: 50%;
+        max-width: 280px;
+        margin: 0;
+        transform: translateX(-50%);
+        font-size: 8px;
+        line-height: 1.8;
+    }
+
+    .back-button {
+        position: absolute;
+        top: 39%;
+        left: 50%;
+        margin: 0;
+        transform: translateX(-50%);
+        pointer-events: auto;
+    }
+
+    .side-note {
+        right: 2%;
+    }
+
+    .flower {
+        right: -35px;
+    }
+}
+
+/* Respeita a preferência do sistema por movimento reduzido. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
